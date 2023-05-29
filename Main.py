@@ -1,22 +1,25 @@
 import pygame
 import random
+
 pygame.init()
 
 w, h = 800, 800
 
 time = pygame.time.Clock()
-FPS = w*w*5
+FPS = w * w * 5
 
-zer = 10 #w / zer == 800 / zer <---> number of poles - 1
+zer = 1
+# w / zer == 800 / zer <---> number of poles - 1
 
-Steps = [Ra for Ra in range(0, int(w * (10 / zer) ) + 8, 8)]  #poles Steps
+Steps = [Ra for Ra in range(0, int(w * (10 / zer)) + 8, 8)]  # poles Steps
 
 Ch = w
 lines = []
 while True:
     Cw = w / 100
     Ch = Ch - zer
-    r = random.randint(0, len(Steps)-1)
+    Ch = Ch - Ch / 80
+    r = random.randint(0, len(Steps) - 1)
     x = Steps[r]
     Steps.pop(r)
     lines.append(pygame.Rect(x, 0, Cw, Ch))
@@ -28,12 +31,11 @@ w = len(lines) * 8
 
 random.shuffle(lines)
 
-
 run = False
 fh = 1
 
-d= 0
-ne = 3
+d = 0
+ne = 2
 
 is_end = False
 RGB = [255, 255, 255]
@@ -69,9 +71,6 @@ while True:
         run = False
         is_end = True
 
-        
- 
-    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
