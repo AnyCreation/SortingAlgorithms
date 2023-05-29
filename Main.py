@@ -17,8 +17,7 @@ Ch = w
 lines = []
 while True:
     Cw = w / 100
-    Ch = Ch - zer
-    Ch = Ch - Ch / 80
+    Ch -= 10
     r = random.randint(0, len(Steps) - 1)
     x = Steps[r]
     Steps.pop(r)
